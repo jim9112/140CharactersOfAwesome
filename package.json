@@ -1,0 +1,32 @@
+{
+  "name": "140CharactersOfAwesome",
+  "version": "1.0.0",
+  "description": "A social media site, like that other one but with less features Built with the MERN stack, this is a full stack app with user authentication that allows users to express themselves in 140 chracters or less",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jim9112/140CharactersOfAwesome.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jim9112/140CharactersOfAwesome/issues"
+  },
+  "homepage": "https://github.com/jim9112/140CharactersOfAwesome#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.2",
+    "express": "^4.17.1",
+    "express-validator": "^6.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.6.8"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "nodemon": "^1.19.1"
+  }
+}
