@@ -5,7 +5,16 @@ import postReducer from './postReducer';
 
 const PostState = props => {
     const initialState = {
-        posts: {}
+        posts: [
+            {
+                username: 'jim9112',
+                post: 'Here are some words about my day'
+            },
+            {
+                username: 'bill123',
+                post: 'I have some very different words about my day'
+            },
+        ]
     }
 }
 
