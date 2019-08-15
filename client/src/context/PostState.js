@@ -28,3 +28,5 @@ return(
     { props.children}
     </PostContext.Provider>
 )
+
+export default PostState;

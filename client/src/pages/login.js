@@ -1,6 +1,11 @@
 import React from 'react';
 
 const Login = () => {
+    
+    const onSubmit = e => {
+        e.preventDefault();
+    }
+    
     return(
         <div className='container front-page'>
             <div className='half-screen'>
@@ -14,7 +19,7 @@ const Login = () => {
                 </ul>
             </div>
             <div className="other-half-screen">
-                    <form action="" method="post" className="center top-20" >
+                    <form className="center top-20" onSubmit={onSubmit} >
                         <input type="text" className="light-input" placeholder="Username" />
                         <input type="text" className="light-input" placeholder="Password" />
                         <input type="button" className="btn" value="Login" />
