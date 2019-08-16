@@ -18,13 +18,19 @@ router.post('/', [
   check('lastName', 'Please enter your last name').not().isEmpty(),
   check('userName', 'Please enter a username').not().isEmpty(),
   check('email', 'Please include a valid email').isEmail(),
-  check('password', 'Pleas enter a password with at least 6 charactors').isLength({ min: 6 })
+  check('password', 'Pleas enter a password with at least 6 charactors').isLength({ min: 6 }),
 ], async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-  const { firstName, lastName, userName, email, password } = req.body;
+  const {
+    firstName,
+    lastName,
+    userName,
+    email,
+    password,
+  } = req.body;
 
   try {
     let user = await User.findOne({ email });
@@ -64,7 +70,7 @@ router.post('/', [
       if (err) throw err;
       res.json({ token });
     });
-  } catch (error) {
+  } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
