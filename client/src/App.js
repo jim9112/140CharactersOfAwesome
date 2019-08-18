@@ -4,9 +4,12 @@ import './App.css';
 import Login from './pages/login';
 import Feed from './pages/feed';
 
+import PostState from './context/PostState';
+
 function App() {
   return (
-    <Router>
+    <PostState>
+      <Router>
         <Fragment>
           <div>
             <Switch>
@@ -16,6 +19,8 @@ function App() {
           </div>
         </Fragment>
       </Router>
+    </PostState>
+    
   );
 };
 
