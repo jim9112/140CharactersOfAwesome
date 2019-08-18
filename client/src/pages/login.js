@@ -9,7 +9,7 @@ const Login = () => {
     return(
         <div className='container front-page'>
             <div className='half-screen'>
-                <h1 class="text-center font-style top-20">Welcome to 140CharactersOfAwesome</h1>
+                <h1 className="text-center font-style top-20">Welcome to 140CharactersOfAwesome</h1>
                 <h2 className="text-center">Kind of like that other social media site except:</h2>
                 <ul className="center">
                     <li>No politicians</li>
