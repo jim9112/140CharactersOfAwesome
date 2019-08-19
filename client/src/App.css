@@ -12,6 +12,9 @@ body {
   height: 100vh;
 }
 
+a {
+  text-decoration: none;
+} 
 
 /* Specific to login page */
 .front-page {
