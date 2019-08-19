@@ -5,7 +5,7 @@ Built with the MERN stack, this is a full stack app with user authentication tha
 
 To download and test you need NodeJS and NPM installed on your computer
 run "npm install" in both the root and client folder,
-run "npm run dev" from route
+run "npm run dev" from root
 
 API will run on localhost:5000
 Client will run on localhost:3000
