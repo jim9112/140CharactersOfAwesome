@@ -42,6 +42,9 @@ a {
   border-right: #ED8121 1px solid; 
 }
 
+/* Register Page */
+
+
 /* Borders */
 .bottom-border {
   border-bottom: #ED8121 1px solid;
@@ -56,7 +59,7 @@ a {
 }
 .center {
   margin: auto;
-  width: 55%;
+  width: 50%;
 }
 
 /* Padding and margins */

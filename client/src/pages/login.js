@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 const Login = () => {
     
     const onSubmit = e => {
@@ -27,7 +29,8 @@ const Login = () => {
                     <div className="text-center">
                         <h2 className="">Dont have an account yet?</h2>
                         <h2 className="">Click below to get started</h2>
-                        <button className="btn">Register</button>
+                        <Link to="/register"><button className="btn">Register</button></Link>
+                        
                     </div>
             </div>
         </div>

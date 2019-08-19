@@ -3,7 +3,7 @@ import React, { useReducer } from 'react';
 import PostContext from './postContext';
 import postReducer from './postReducer';
 
-import { ADD_POST } from '../types';
+import { ADD_POST } from '../../types';
 
 const PostState = (props) => {
 

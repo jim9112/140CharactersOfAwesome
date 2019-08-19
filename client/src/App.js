@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Login from './pages/login';
 import Feed from './pages/feed';
+import Register from './components/auth/Register';
 
-import PostState from './context/PostState';
+import PostState from './context/post/PostState';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Switch>
               <Route exact path='/' component={Feed} />
               <Route exact path='/login' component={Login} />
+              <Route exact path='/register' component={Register} />
             </Switch>
           </div>
         </Fragment>

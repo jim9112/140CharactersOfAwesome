@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import Nav from '../components/layout/Nav';
 import Posts from '../components/posts/Posts';
-import PostContext from '../context/postContext';
+import PostContext from '../context/post/postContext';
 
 const Feed = () => {
     const postContext = useContext(PostContext);
