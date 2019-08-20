@@ -41,9 +41,18 @@ a {
   border-left: #ED8121 1px solid;
   border-right: #ED8121 1px solid; 
 }
-
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
 /* Register Page */
-
+.form-container {
+  width: 25%;
+  margin: auto;
+  margin-top: 20%;
+}
 /* Borders */
 .bottom-border {
   border-bottom: #ED8121 1px solid;
@@ -65,6 +74,11 @@ a {
 .no-pad {
   padding: 0px;
 }
+
+.p-4 {
+  padding: .4em;
+}
+
 
 .top-20 {
   margin-top: 20px;

@@ -21,32 +21,35 @@ const Register = () => {
 
     return (
         <div>
-            <form className="center">
-                <div>
+            <form className="form-container">
+                <div className="p-4">
                     <label htmlFor="firstName">First Name</label>
-                    <input type="text" name="firstName" value={firstName} onChange={onChange} />
+                    <input className="float-right" type="text" name="firstName" value={firstName} onChange={onChange} />
                 </div>
-                <div>
-                    <label htmlFor="lastName">Last Name</label>
-                    <input type="text" name="lastName" value={lastName} onChange={onChange} />
+                <div className="p-4">
+                    <label htmlFor="lastName" >Last Name</label>
+                    <input className="float-right" type="text" name="lastName" value={lastName} onChange={onChange} />
                 </div>
-               <div>
+               <div className="p-4">
                     <label htmlFor="username">Username</label>
-                    <input type="text" name="username" value={username} onChange={onChange} />
+                    <input className="float-right" type="text" name="username" value={username} onChange={onChange} />
                </div>
-               <div>
+               <div className="p-4">
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" value={email} onChange={onChange} />
+                    <input className="float-right" type="email" name="email" value={email} onChange={onChange} />
                </div>
-               <div>
+               <div className="p-4">
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" value={password} onChange={onChange} />
+                    <input className="float-right" type="password" name="password" value={password} onChange={onChange} />
+               </div>
+               <div className="p-4">
+                    <label htmlFor="password2">Confirm Password</label>
+                    <input className="float-right" type="password" name="password2" value={password2} onChange={onChange} />
                </div>
                <div>
-                    <label htmlFor="password2">Confirm Password</label>
-                    <input type="password" name="password2" value={password2} onChange={onChange} />
-               </div>
                 <input type="submit" value="Login" onSubmit={onSubmit} />
+               </div>
+                
             </form>   
         </div>
     )
