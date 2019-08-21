@@ -2,16 +2,20 @@
 import React, { useState, useContext } from 'react';
 
 import AlertContext from '../../context/alert/alertContext';
+import AuthContext from '../../context/auth/authContext';
+
 
 const Register = () => {
   const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
 
   const { setAlert } = alertContext;
+  const { registerUser } = authContext;
 
   const [user, setUser] = useState({
     firstName: '',
     lastName: '',
-    username: '',
+    userName: '',
     email: '',
     password: '',
     password2: '',
@@ -20,7 +24,7 @@ const Register = () => {
   const {
     firstName,
     lastName,
-    username,
+    userName,
     email,
     password,
     password2,
@@ -32,9 +36,9 @@ const Register = () => {
     e.preventDefault();
     if (password !== password2) {
       setAlert('Passwords do not match');
-      console.log('password no match');
     } else {
-      console.log('Register submit');
+      registerUser({ firstName, lastName, userName, email, password });
+      console.log(user);
     }
   };
 
@@ -50,8 +54,8 @@ const Register = () => {
           <input className="float-right" type="text" name="lastName" value={lastName} onChange={onChange} required />
         </div>
         <div className="p-4">
-          <label htmlFor="username">Username</label>
-          <input className="float-right" type="text" name="username" value={username} onChange={onChange} required />
+          <label htmlFor="userName">Username</label>
+          <input className="float-right" type="text" name="userName" value={userName} onChange={onChange} required />
         </div>
         <div className="p-4">
           <label htmlFor="email">Email</label>

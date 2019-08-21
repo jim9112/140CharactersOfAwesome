@@ -9,9 +9,11 @@ import Alert from './components/layout/Alert';
 
 import PostState from './context/post/PostState';
 import AlertState from './context/alert/AlertState';
+import AuthState from './context/auth/AuthState';
 
 function App() {
   return (
+    <AuthState>
     <PostState>
       <AlertState>
       <Router>
@@ -28,7 +30,7 @@ function App() {
       </Router>
       </AlertState>
     </PostState>
-    
+    </AuthState>
   );
 };
 
