@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React, { useReducer } from 'react';
 
 import AuthContext from './authContext';
@@ -6,21 +7,21 @@ import authReducer from './authReducer';
 import {  } from '../../types';
 
 const AuthState = (props) => {
+  // hard coded state for testing purposes
+  const initialState = {
 
-    // hard coded state for testing purposes
-    const initialState = {
-        
-    }
+  };
 
-    const [state, dispatch] = useReducer(authReducer, initialState );
+  const [state, dispatch] = useReducer(authReducer, initialState );
 
-    return(
-        <AuthContext.Provider value={{
-            
-        }}>
-        { props.children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={{
+
+    }}
+    >
+      { props.children }
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthState;
