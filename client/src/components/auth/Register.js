@@ -1,16 +1,27 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
 
-const Register = () => {
+const Register = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
 
   const { setAlert } = alertContext;
-  const { registerUser } = authContext;
+  const { registerUser, error, clearErrors, isAuthenticated  } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/');
+    }
+
+    if (error === 'User already exsists') {
+      setAlert(error);
+      clearErrors();
+    }
+  }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     firstName: '',
@@ -38,7 +49,6 @@ const Register = () => {
       setAlert('Passwords do not match');
     } else {
       registerUser({ firstName, lastName, userName, email, password });
-      console.log(user);
     }
   };
 
