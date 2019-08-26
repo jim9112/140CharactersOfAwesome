@@ -11,9 +11,10 @@ const Feed = () => {
   const authContext = useContext(AuthContext);
 
   const { addPost, posts } = postContext;
+  const { user, loadUser } = authContext;
 
   useEffect(() => {
-    authContext.loadUser();
+    loadUser();
   }, []);
   // hard coded in username nd id, remove later <<<<<<<<<<<<<<<<<<<<<<
   const post = {
@@ -43,7 +44,7 @@ const Feed = () => {
     <div className='container feed-page'>
       <Nav />
       <div className="feed-middle">
-        <h1 className="bottom-border orange">Home</h1>
+        <h1 className="bottom-border orange">Hello { user && user.userName }</h1>
         <form action="" className="bottom-border" id="feed-form" onSubmit={onSubmit}>
           <textarea maxLength="140" cols="50" placeholder="Say Something" onChange={onChange}></textarea>
           <input className="btn" type="submit" value="Post" />
