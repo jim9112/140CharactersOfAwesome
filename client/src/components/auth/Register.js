@@ -56,27 +56,27 @@ const Register = (props) => {
     <div>
       <form className="form-container" onSubmit={onSubmit}>
         <div className="p-4">
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="firstName" className='orange' >First Name</label>
           <input className="float-right" type="text" name="firstName" value={firstName} onChange={onChange} required />
         </div>
         <div className="p-4">
-          <label htmlFor="lastName" >Last Name</label>
+          <label htmlFor="lastName" className='orange' >Last Name</label>
           <input className="float-right" type="text" name="lastName" value={lastName} onChange={onChange} required />
         </div>
         <div className="p-4">
-          <label htmlFor="userName">Username</label>
+          <label htmlFor="userName" className='orange' >Username</label>
           <input className="float-right" type="text" name="userName" value={userName} onChange={onChange} required />
         </div>
         <div className="p-4">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className='orange' >Email</label>
           <input className="float-right" type="email" name="email" value={email} onChange={onChange} required />
         </div>
         <div className="p-4">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password" className='orange' >Password</label>
           <input className="float-right" type="password" name="password" value={password} onChange={onChange} required />
         </div>
         <div className="p-4">
-          <label htmlFor="password2">Confirm Password</label>
+          <label htmlFor="password2" className='orange' >Confirm Password</label>
           <input className="float-right" type="password" name="password2" value={password2} onChange={onChange} required />
         </div>
         <div>

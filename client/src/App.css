@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: #ED8121;
 }
 * {
   font-family: Roboto;
@@ -51,8 +52,13 @@ a {
 .form-container {
   width: 25%;
   margin: auto;
-  margin-top: 20%;
+  margin-top: 10%;
+  background-color: #151D26;
+  padding: 10px;
+  border: #FFFFFF solid 2px;
+  border-radius: 10px;
 }
+
 /* Borders */
 .bottom-border {
   border-bottom: #ED8121 1px solid;
