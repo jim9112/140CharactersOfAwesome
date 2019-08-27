@@ -6,6 +6,7 @@ import Login from './pages/login';
 import Feed from './pages/feed';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 import PostState from './context/post/PostState';
 import AlertState from './context/alert/AlertState';
@@ -21,7 +22,7 @@ function App() {
           <div>
             <Alert />
             <Switch>
-              <Route exact path="/" component={Feed} />
+              <PrivateRoute exact path="/" component={Feed} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
             </Switch>
