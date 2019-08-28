@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useContext, useEffect } from 'react';
 
+
+import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
@@ -81,6 +83,9 @@ const Register = (props) => {
         </div>
         <div>
           <input type="submit" value="Login" />
+          <Link to='/login'>
+            <input type="button" value='Cancel' />
+          </Link>
         </div>
       </form>
     </div>
