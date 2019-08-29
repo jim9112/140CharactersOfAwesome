@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 const Post = ({ post }) => {
   return (
     <div className="orange bottom-border">
-      <h3>{post.username}</h3>
-      <p className="text-center">{post.post}</p>
+      <h3>{post.userName}</h3>
+      <p className="text-center">{post.content}</p>
     </div>
   );
 };
