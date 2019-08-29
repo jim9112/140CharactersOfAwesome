@@ -21,7 +21,7 @@ const Feed = () => {
   const post = {
     id: '',
     userName: `${user && user.userName}`,
-    post: '',
+    content: '',
   };
   console.log(post);
   // resets post input
@@ -31,7 +31,7 @@ const Feed = () => {
 
   // updates post variable as the user types
   const onChange = (e) => {
-    post.post = e.target.value;
+    post.content = e.target.value;
   };
 
   // submitting the form and clearing it

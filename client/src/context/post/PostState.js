@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
 import PostContext from './postContext';
 import postReducer from './postReducer';
@@ -17,7 +17,7 @@ const PostState = (props) => {
     // Get all posts
     const getPosts = async () => {
         try {
-            const res = await Axios.get('/api/posts');
+            const res = await axios.get('/api/posts');
             dispatch({
                 type: GET_POSTS,
                 payload: res.data
@@ -27,8 +27,22 @@ const PostState = (props) => {
         }
     }
     // add post to feed
-    const addPost = (post) => {
-        dispatch({ type: ADD_POST, payload: post});
+    const addPost = async (post) => {
+        const config = {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+          try {
+            const res = await axios.post('/api/posts', post, config)
+      
+            dispatch({ 
+              type: ADD_POST,
+              payload: res.data 
+            });
+          } catch (err) {
+            
+          } 
     };
 
     return(
