@@ -45,11 +45,20 @@ const PostState = (props) => {
           } 
     };
 
+    // Clear posts
+
+    const clearPosts = () => {
+        dispatch({
+            type: CLEAR_POSTS
+        })
+    }
+
     return(
         <PostContext.Provider value={{
             posts: state.posts,
             addPost,
-            getPosts
+            getPosts,
+            clearPosts
         }}>
         { props.children}
         </PostContext.Provider>

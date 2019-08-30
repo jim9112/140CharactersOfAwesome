@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useContext } from 'react';
 
-import { Link } from 'react-router-dom';
 import chicken from '../media/chicken.png';
 import AuthContext from '../../context/auth/authContext';
 

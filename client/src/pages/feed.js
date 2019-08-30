@@ -10,20 +10,20 @@ const Feed = () => {
   const postContext = useContext(PostContext);
   const authContext = useContext(AuthContext);
 
-  const { addPost, posts, getPosts} = postContext;
+  const { addPost, getPosts, clearPosts} = postContext;
   const { user, loadUser } = authContext;
 
   useEffect(() => {
     loadUser();
     getPosts();
   }, []);
-  // hard coded in username nd id, remove later <<<<<<<<<<<<<<<<<<<<<<
+
   const post = {
     id: '',
     userName: `${user && user.userName}`,
     content: '',
   };
-  console.log(post);
+
   // resets post input
   const resetForm = () => {
     document.getElementById('feed-form').reset();
@@ -39,6 +39,8 @@ const Feed = () => {
     e.preventDefault();
     addPost(post);
     resetForm();
+    clearPosts();
+    getPosts();
   };
 
   return (
