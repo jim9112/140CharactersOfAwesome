@@ -44,7 +44,11 @@ const PostState = (props) => {
             
           } 
     };
+    // Display current users posts
 
+    // Delete posts
+
+    
     // Clear posts
 
     const clearPosts = () => {

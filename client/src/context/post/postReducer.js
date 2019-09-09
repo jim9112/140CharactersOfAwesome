@@ -10,7 +10,7 @@ export default (state, action) => {
     case ADD_POST:
       return {
         ...state,
-        posts: [...state.posts, action.payload],
+        posts: [action.payload, ...state.posts],
       };
     case CLEAR_POSTS:
       return {

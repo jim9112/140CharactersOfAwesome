@@ -39,8 +39,6 @@ const Feed = () => {
     e.preventDefault();
     addPost(post);
     resetForm();
-    clearPosts();
-    getPosts();
   };
 
   return (
