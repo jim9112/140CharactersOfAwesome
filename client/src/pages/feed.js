@@ -41,6 +41,7 @@ const Feed = () => {
     resetForm();
   };
 
+  
   return (
     <div className='container feed-page'>
       <Nav />
