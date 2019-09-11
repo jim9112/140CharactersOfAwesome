@@ -1,8 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useContext, useEffect } from 'react';
 
-
-// import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
@@ -198,7 +196,7 @@ const Register = (props) => {
           >Sign Up</Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/login" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
