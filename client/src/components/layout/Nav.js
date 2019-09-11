@@ -21,13 +21,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-
 const Nav = () => {
 
   const authContext = useContext(AuthContext);
 
   const { logout } = authContext;
+  
   const classes = useStyles();
+  
   const onLogout = () => {
     logout();
   }
