@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import { green } from '@material-ui/core/colors';
+import { red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -22,16 +22,16 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     marginTop: theme.spacing(2),
-    color: theme.primary,
+    color: '#ED8121',
     // border: '1px solid green',
     '& label': {
-      color: 'green'
+      color: '#ED8121'
     },
     '& .MuiInputBase-input': {
-      color: 'green',
+      color: '#ED8121',
     },
     '& focus': {
-      outlineColor: 'green',
+      outlineColor: '#ED8121',
     }
   },
   submit: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 
 const theme = createMuiTheme({
   palette: {
-    primary: green,
+    primary: red,
   },
 });
 
