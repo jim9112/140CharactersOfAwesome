@@ -4,6 +4,7 @@ import AlertContext from '../context/alert/alertContext';
 
 // import { Link } from 'react-router-dom';
 
+import { ThemeProvider } from '@material-ui/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,7 +13,7 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 // Page Styles
@@ -43,11 +44,28 @@ const useStyles = makeStyles(theme => ({
     '& .MuiInputBase-input': {
       color: '#ED8121',
     },
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#ED8121',
+    },
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  title: {
+    color: 'white',
+  },
 }));
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ED8121'
+    },
+    secondary: {
+      main: '#b09fa5'
+    },
+  },
+});
 
 const Login = (props) => {
     
@@ -98,13 +116,21 @@ const Login = (props) => {
       <Container component="main" maxwidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Typography component="h1" variant="h5" gutterBottom>
+          <Typography className={classes.title} component="h1" variant="h5" gutterBottom>
             Welcome to
           </Typography>
-          <Typography component="h1" variant="h5" gutterBottom>
+          <Typography className={classes.title} component="h1" variant="h5" gutterBottom>
             140CharactersOfAwesome
           </Typography>
+          {/* <h2 className="text-center">Kind of like that other social media site except:</h2>
+            <ul className="center">
+            <li>No politicians</li>
+            <li>No celebrities</li>
+            <li>Way less features</li>
+            <li>Way more downtime</li>
+            </ul> */}
           <form className={classes.form} onSubmit={onSubmit}>
+          <ThemeProvider theme={theme}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -137,6 +163,7 @@ const Login = (props) => {
                 />
               </Grid>
             </Grid>
+            
             <Button
             type="submit"
             fullWidth
@@ -144,32 +171,19 @@ const Login = (props) => {
             color="primary"
             className={classes.submit}
           >Sign In</Button>
+          
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="/register" variant="body2">
+              <Link className={classes.title} href="/register" variant="body2">
                 Dont have an account? Register now!
               </Link>
             </Grid>
           </Grid>
+          </ThemeProvider>
           </form>
         </div>
         
       </Container> 
-
-
-
-        // <div className='container front-page'>
-        //     <div className='half-screen'>
-        //         <h1 className="text-center font-style top-20">Welcome to 140CharactersOfAwesome</h1>
-        //         <h2 className="text-center">Kind of like that other social media site except:</h2>
-        //         <ul className="center">
-        //             <li>No politicians</li>
-        //             <li>No celebrities</li>
-        //             <li>Way less features</li>
-        //             <li>Way more downtime</li>
-        //         </ul>
-        //     </div>
-        // </div>
     )
 }
 
