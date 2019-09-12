@@ -19,14 +19,14 @@ function App() {
       <AlertState>
       <Router>
         <Fragment>
-          
+          <div>
             <Alert />
             <Switch>
               <PrivateRoute exact path="/" component={Feed} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
             </Switch>
-          
+          </div>
         </Fragment>
       </Router>
       </AlertState>

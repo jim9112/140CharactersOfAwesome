@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #ED8121;
+  background-color: #151D26;
 }
 * {
   font-family: Roboto;
@@ -16,22 +16,6 @@ body {
 a {
   text-decoration: none;
 } 
-
-/* Specific to login page */
-.front-page {
-  grid-template-columns: 50% 50%;
-}
-
-.half-screen {
-  height: 100%;
-  background: #ED8121;
-  color: #FFFFFF;
-}
-.other-half-screen {
-  height: 100%;
-  background: #151D26;
-  color: #ED8121;
-}
 
 /* Specific to feed page */
 .feed-page {
