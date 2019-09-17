@@ -16,7 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-// Page Styles
+// JS served style sheet
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
@@ -56,6 +56,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// Color theme for page
 const theme = createMuiTheme({
   palette: {
     primary: {
