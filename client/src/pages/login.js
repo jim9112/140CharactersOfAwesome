@@ -1,17 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
+// Import state 
 import AuthContext from '../context/auth/authContext';
 import AlertContext from '../context/alert/alertContext';
-
-// import { Link } from 'react-router-dom';
-
+// Import UI
 import { ThemeProvider } from '@material-ui/styles';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -123,13 +120,6 @@ const Login = (props) => {
           <Typography className={classes.title} component="h1" variant="h5" gutterBottom>
             140CharactersOfAwesome
           </Typography>
-          {/* <h2 className="text-center">Kind of like that other social media site except:</h2>
-            <ul className="center">
-            <li>No politicians</li>
-            <li>No celebrities</li>
-            <li>Way less features</li>
-            <li>Way more downtime</li>
-            </ul> */}
           <form className={classes.form} onSubmit={onSubmit}>
           <ThemeProvider theme={theme}>
             <Grid container spacing={2}>
