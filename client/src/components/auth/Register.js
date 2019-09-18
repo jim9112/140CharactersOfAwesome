@@ -86,7 +86,7 @@ const Register = (props) => {
     }
 
     if (error === 'User already exsists') {
-      setAlert(error);
+      alert(error);
       clearErrors();
     }
   }, [error, isAuthenticated, props.history]);
@@ -114,7 +114,7 @@ const Register = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert('Passwords do not match');
+      alert('Passwords do not match');
     } else {
       registerUser({ firstName, lastName, userName, email, password });
     }
