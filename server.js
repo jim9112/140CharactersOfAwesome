@@ -19,7 +19,7 @@ app.use('/api/posts', require('./routes/posts'));
 // Serve static routes
 if (process.env.Node_ENV === 'production') {
   // set static folder
-  app.use(express.static('client/build'));
+  app.use(express.static('client/build/static'));
 
   app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
 }
