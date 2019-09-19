@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     maxWidth: '500px',
-    margin: 'auto'
+    margin: 'auto',
   },
   avatar: {
     margin: theme.spacing(1),
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   textField: {
     color: '#ED8121',
     '& label': {
-      color: '#ED8121'
+      color: '#ED8121',
     },
     '& .MuiInputBase-input': {
       color: '#ED8121',
@@ -63,10 +63,10 @@ const useStyles = makeStyles(theme => ({
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#ED8121'
+      main: '#ED8121',
     },
     secondary: {
-      main: '#b09fa5'
+      main: '#b09fa5',
     },
   },
 });
@@ -115,6 +115,8 @@ const Register = (props) => {
     e.preventDefault();
     if (password !== password2) {
       alert('Passwords do not match');
+    } else if (password.length < 6) {
+      alert('Password length should be more than 6 characters');
     } else {
       registerUser({ firstName, lastName, userName, email, password });
     }
@@ -132,109 +134,111 @@ const Register = (props) => {
         </Typography>
         <form className={classes.form} onSubmit={onSubmit}>
           <ThemeProvider theme={theme}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                className={classes.textField}
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-                onChange={onChange}
-                required
-              />
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  className={classes.textField}
+                  autoComplete="fname"
+                  name="firstName"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                  onChange={onChange}
+                  required
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="lname"
+                  onChange={onChange}
+                  required
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="userName"
+                  label="User Name"
+                  name="userName"
+                  autoComplete="username"
+                  onChange={onChange}
+                  required
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  onChange={onChange}
+                  required
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  onChange={onChange}
+                  required
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className={classes.textField}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password2"
+                  label="Confirm Password"
+                  type="password"
+                  id="password2"
+                  autoComplete="current-password"
+                  onChange={onChange}
+                  required
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                className={classes.textField}
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-                onChange={onChange}
-                required
-              />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign Up
+            </Button>
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Link className={classes.title} href="/login" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                className={classes.textField}
-                variant="outlined"
-                required
-                fullWidth
-                id="userName"
-                label="User Name"
-                name="userName"
-                autoComplete="username"
-                onChange={onChange}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                className={classes.textField}
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                onChange={onChange}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                className={classes.textField}
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={onChange}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                className={classes.textField}
-                variant="outlined"
-                required
-                fullWidth
-                name="password2"
-                label="Confirm Password"
-                type="password"
-                id="password2"
-                autoComplete="current-password"
-                onChange={onChange}
-                required
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >Sign Up</Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link className={classes.title} href="/login" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
           </ThemeProvider>
         </form>
       </div>
