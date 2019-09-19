@@ -11,7 +11,6 @@ import Button from '@material-ui/core/Button';
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuIcon from '@material-ui/icons/Menu';
-import { width } from '@material-ui/system';
 
 // JS served style sheet
 const useStyles = makeStyles(theme => ({
@@ -37,6 +36,9 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     maxWidth: '100px',
+  },
+  menuButton: {
+    cursor: 'pointer',
   },
   lineUp: {
     display: 'inline-block',
@@ -99,7 +101,6 @@ const Feed = () => {
     addPost(post);
     resetForm();
   };
-  const onClick = () => console.log('click');
   
   return (
     <div className='container feed-page'>
@@ -107,7 +108,7 @@ const Feed = () => {
       <div className="feed-middle">
       <ThemeProvider theme={theme}>
         <div className={classes.theTop}>
-          <MenuIcon color="primary" fontSize="large" onClick={openDrawer}/>
+          <MenuIcon className={classes.menuButton} color="primary" fontSize="large" onClick={openDrawer}/>
           <h1 className={classes.lineUp}>Hello { user && user.userName }</h1>
         </div>
         <form action="" className="bottom-border" id="feed-form" onSubmit={onSubmit}>
@@ -131,7 +132,6 @@ const Feed = () => {
             >
               Post
             </Button>
-          
         </form>
         </ThemeProvider>
         <Posts />
