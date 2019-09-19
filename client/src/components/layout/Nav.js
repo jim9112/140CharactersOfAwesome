@@ -13,6 +13,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
 import Link from '@material-ui/core/Link';
+import { display } from '@material-ui/system';
 
 // JS served style sheet
 const useStyles = makeStyles(theme => ({
@@ -22,7 +23,8 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
   },
   list: {
-    width: 250, 
+    width: 250,
+    display: 'none'
   },
   menuStyle: {
     '& .MuiDrawer-paper': {
