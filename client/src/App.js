@@ -13,6 +13,12 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import PostState from './context/post/PostState';
 import AlertState from './context/alert/AlertState';
 import AuthState from './context/auth/AuthState';
+import setAuthToken from './utils/setAuthToken';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
 
 function App() {
   return (
