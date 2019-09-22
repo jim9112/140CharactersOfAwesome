@@ -13,7 +13,6 @@ import InfoIcon from '@material-ui/icons/Info';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
 import Link from '@material-ui/core/Link';
-import { display } from '@material-ui/system';
 
 // JS served style sheet
 const useStyles = makeStyles(theme => ({
@@ -24,13 +23,13 @@ const useStyles = makeStyles(theme => ({
   },
   list: {
     width: 250,
-    display: 'none'
+    display: 'none',
   },
   menuStyle: {
     '& .MuiDrawer-paper': {
       backgroundColor: '#ED8121',
       color: '#151D26',
-    }
+    },
   },
   link: {
     textDecoration: 'none',
@@ -38,8 +37,8 @@ const useStyles = makeStyles(theme => ({
     '& .MuiLink-underlineHover': {
       textDecoration: 'none',
       color: '#151D26',
-    }
-  }
+    },
+  },
 }));
 
 // Nav bar element
@@ -50,12 +49,12 @@ const Nav = () => {
 
   const { logout } = authContext;
   const { drawer, closeDrawer } = postContext;
-    
+
   const classes = useStyles();
-  
+
   return (
-    <div 
-    className={classes.list}
+    <div
+      className={classes.list}
       role="presentation"
       onClick={closeDrawer}
       onKeyDown={closeDrawer}
@@ -74,11 +73,11 @@ const Nav = () => {
           </ListItem>
         </Link>
         <ListItem button key="logout" onClick={logout}>
-              <ListItemIcon>{<ExitToAppIcon />}</ListItemIcon>
-              <ListItemText primary="Logout" />
+          <ListItemIcon>{<ExitToAppIcon />}</ListItemIcon>
+          <ListItemText primary="Logout" />
         </ListItem>
       </Drawer>
-    </div> 
+    </div>
   );
 };
 

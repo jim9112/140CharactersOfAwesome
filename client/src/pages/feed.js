@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
     color: '#ED8121',
     '& label': {
-      color: '#ED8121'
+      color: '#ED8121',
     },
     '& .MuiInputBase-input': {
       color: '#ED8121',
@@ -56,10 +56,10 @@ const useStyles = makeStyles(theme => ({
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#ED8121'
+      main: '#ED8121',
     },
     secondary: {
-      main: '#b09fa5'
+      main: '#b09fa5',
     },
   },
 });
@@ -68,7 +68,7 @@ const Feed = () => {
   const postContext = useContext(PostContext);
   const authContext = useContext(AuthContext);
 
-  const { addPost, getPosts, clearPosts, drawer, openDrawer } = postContext;
+  const { addPost, getPosts, openDrawer } = postContext;
   const { user, loadUser } = authContext;
 
   const classes = useStyles();
@@ -101,17 +101,19 @@ const Feed = () => {
     addPost(post);
     resetForm();
   };
-  
+
   return (
-    <div className='container feed-page'>
+    <div className="container feed-page">
       <Nav />
       <div className="feed-middle">
-      <ThemeProvider theme={theme}>
-        <div className={classes.theTop}>
-          <MenuIcon className={classes.menuButton} color="primary" fontSize="large" onClick={openDrawer}/>
-          <h1 className={classes.lineUp}>Hello { user && user.userName }</h1>
-        </div>
-        <form action="" className="bottom-border" id="feed-form" onSubmit={onSubmit}>
+        <ThemeProvider theme={theme}>
+          <div className={classes.theTop}>
+            <MenuIcon className={classes.menuButton} color="primary" fontSize="large" onClick={openDrawer}/>
+            <h1 className={classes.lineUp}>
+              Hello { user && user.userName }
+            </h1>
+          </div>
+          <form action="" className="bottom-border" id="feed-form" onSubmit={onSubmit}>
             <TextField
               maxLength="140"
               id="outlined-dense-multiline"
@@ -132,7 +134,7 @@ const Feed = () => {
             >
               Post
             </Button>
-        </form>
+          </form>
         </ThemeProvider>
         <Posts />
       </div>

@@ -36,7 +36,7 @@ const Post = ({ post }) => {
           {post.userName}
         </Typography>
         <Typography component="p">
-        {post.content}
+          {post.content}
         </Typography>
       </CardContent>
     </Card>
