@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     },
     '& focus': {
       outlineColor: '#ED8121',
-    }
+    },
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -109,9 +109,7 @@ const Feed = () => {
         <ThemeProvider theme={theme}>
           <div className={classes.theTop}>
             <MenuIcon className={classes.menuButton} color="primary" fontSize="large" onClick={openDrawer}/>
-            <h1 className={classes.lineUp}>
-              Hello { user && user.userName }
-            </h1>
+            <h1 className={classes.lineUp}>Hello { user && user.userName }</h1>
           </div>
           <form action="" className="bottom-border" id="feed-form" onSubmit={onSubmit}>
             <TextField
@@ -124,14 +122,14 @@ const Feed = () => {
               multiline
               rowsMax="4"
               onChange={onChange}
-            />
+          />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
-            >
+          >
               Post
             </Button>
           </form>
