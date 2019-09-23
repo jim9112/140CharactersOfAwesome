@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React, { useContext, useState, useEffect } from 'react';
 // Import state 
 import AuthContext from '../context/auth/authContext';
@@ -27,16 +28,16 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     maxWidth: '800px',
-    margin: 'auto'
+    margin: 'auto',
   },
   form: {
     maxWidth: '500px',
-    margin: 'auto'
+    margin: 'auto',
   },
   textField: {
     color: '#ED8121',
     '& label': {
-      color: '#ED8121'
+      color: '#ED8121',
     },
     '& .MuiInputBase-input': {
       color: '#ED8121',
@@ -57,70 +58,68 @@ const useStyles = makeStyles(theme => ({
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#ED8121'
+      main: '#ED8121',
     },
     secondary: {
-      main: '#b09fa5'
+      main: '#b09fa5',
     },
   },
 });
 
 const Login = (props) => {
-    
-    const authContext = useContext(AuthContext);
-    const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+  const alertContext = useContext(AlertContext);
 
-    const { setAlert } = alertContext;
-    const { login, error, clearErrors, isAuthenticated } = authContext;
+  const { setAlert } = alertContext;
+  const { login, error, clearErrors, isAuthenticated } = authContext;
 
-    const classes = useStyles();
+  const classes = useStyles();
 
-    useEffect(() => {
-        if (isAuthenticated) {
-          props.history.push('/');
-        }
-    
-        if (error === 'Invalid Credentials') {
-          alert(error);
-          clearErrors();
-        }
-      }, [error, isAuthenticated, props.history]);
-
-
-    const onSubmit = e => {
-        e.preventDefault();
-        console.log('Test');
-        if (email === '' || password === '') {
-            setAlert('Invalid Credentials')
-          } else {
-            login({
-              email,
-              password
-            })
-          }
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/');
     }
-    
-    const [user, setUser] = useState({
-        email: '',
-        password: '',
+
+    if (error === 'Invalid Credentials') {
+      alert(error);
+      clearErrors();
+    }
+  }, [error, isAuthenticated, props.history]);
+
+
+  const onSubmit = e => {
+    e.preventDefault();
+    if (email === '' || password === '') {
+      setAlert('Invalid Credentials');
+    } else {
+      login({
+        email,
+        password,
       });
-    
-      const { email, password} = user;
-    
-      const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value});
+    }
+  };
 
-    return(
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
 
-      <Container component="main" maxwidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Typography className={classes.title} component="h1" variant="h5" gutterBottom>
-            Welcome to
-          </Typography>
-          <Typography className={classes.title} component="h1" variant="h5" gutterBottom>
-            140CharactersOfAwesome
-          </Typography>
-          <form className={classes.form} onSubmit={onSubmit}>
+  const { email, password } = user;
+
+  const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value});
+
+  return (
+
+    <Container component="main" maxwidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Typography className={classes.title} component="h1" variant="h5" gutterBottom>
+          Welcome to
+        </Typography>
+        <Typography className={classes.title} component="h1" variant="h5" gutterBottom>
+          140CharactersOfAwesome
+        </Typography>
+        <form className={classes.form} onSubmit={onSubmit}>
           <ThemeProvider theme={theme}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -154,28 +153,28 @@ const Login = (props) => {
                 />
               </Grid>
             </Grid>
-            
             <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >Sign In</Button>
-          
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link className={classes.title} href="/register" variant="body2">
-                Dont have an account? Register now!
-              </Link>
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+            Sign In
+            </Button>
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Link className={classes.title} href="/register" variant="body2">
+                  Dont have an account? Register now!
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
           </ThemeProvider>
-          </form>
-        </div>
-        
-      </Container> 
-    )
-}
+        </form>
+      </div>
+
+    </Container>
+  );
+};
 
 export default Login;

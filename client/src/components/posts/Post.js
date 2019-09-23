@@ -59,15 +59,12 @@ const Post = ({ post }) => {
           </Typography>
         </CardContent>
       </Card>
-
     );
   } else {
     return(
       <h1>Loading</h1>
     );
-  }
-
-  
+  }  
 };
 
 Post.propTypes = {

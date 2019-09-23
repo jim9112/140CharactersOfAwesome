@@ -103,7 +103,7 @@ const Feed = () => {
   };
 
   return (
-    <div className='container feed-page'>
+    <div className="container feed-page">
       <Nav />
       <div className="feed-middle">
         <ThemeProvider theme={theme}>
