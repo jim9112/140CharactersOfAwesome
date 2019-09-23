@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import PropTypes from 'prop-types';
 import AuthContext from '../../context/auth/authContext';
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 
 const Post = ({ post }) => {
   const authContext = useContext(AuthContext);
-  const { user, loadUser } = authContext;
+  const { user } = authContext;
 
   const classes = useStyles();
 
@@ -55,7 +55,7 @@ const Post = ({ post }) => {
             {post.userName}
           </Typography>
           <Typography component="p">
-          {post.content}
+            {post.content}
           </Typography>
         </CardContent>
       </Card>

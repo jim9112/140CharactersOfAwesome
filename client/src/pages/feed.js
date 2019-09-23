@@ -68,7 +68,7 @@ const Feed = () => {
   const postContext = useContext(PostContext);
   const authContext = useContext(AuthContext);
 
-  const { addPost, getPosts, clearPosts, drawer, openDrawer } = postContext;
+  const { addPost, getPosts, openDrawer } = postContext;
   const { user, loadUser } = authContext;
 
   const classes = useStyles();
