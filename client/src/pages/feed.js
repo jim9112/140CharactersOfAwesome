@@ -1,16 +1,17 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useContext, useEffect } from 'react';
 
-import Nav from '../components/layout/Nav';
-import Posts from '../components/posts/Posts';
-import PostContext from '../context/post/postContext';
-import AuthContext from '../context/auth/authContext';
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ThemeProvider } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import Nav from '../components/layout/Nav';
+import Posts from '../components/posts/Posts';
+import PostContext from '../context/post/postContext';
+import AuthContext from '../context/auth/authContext';
 
 // JS served style sheet
 const useStyles = makeStyles(theme => ({
@@ -49,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     color: '#ED8121',
     borderBottom: '1px solid #ED8121',
     padding: '10px',
-  }
+  },
 }));
 
 // Color theme for page
@@ -108,8 +109,10 @@ const Feed = () => {
       <div className="feed-middle">
         <ThemeProvider theme={theme}>
           <div className={classes.theTop}>
-            <MenuIcon className={classes.menuButton} color="primary" fontSize="large" onClick={openDrawer}/>
-            <h1 className={classes.lineUp}>Hello { user && user.userName }</h1>
+            <MenuIcon className={classes.menuButton} color="primary" fontSize="large" onClick={openDrawer} />
+            <h1 className={classes.lineUp}>
+              Hello { user && user.userName }
+            </h1>
           </div>
           <form action="" className="bottom-border" id="feed-form" onSubmit={onSubmit}>
             <TextField
@@ -122,14 +125,14 @@ const Feed = () => {
               multiline
               rowsMax="4"
               onChange={onChange}
-          />
+            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
-          >
+            >
               Post
             </Button>
           </form>
