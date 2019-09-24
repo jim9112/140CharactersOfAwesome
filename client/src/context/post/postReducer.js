@@ -1,4 +1,4 @@
-import { ADD_POST, GET_POSTS, CLEAR_POSTS, TOGGLE_DRAWER } from '../../types';
+import { ADD_POST, GET_POSTS, CLEAR_POSTS, TOGGLE_DRAWER, DELETE_POST } from '../../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -21,6 +21,11 @@ export default (state, action) => {
       return {
         ...state,
         drawer: action.payload,
+      };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(post => post._id !== action.payload),
       };
     default:
       return state;

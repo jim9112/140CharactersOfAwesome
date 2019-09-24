@@ -1,13 +1,16 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useContext } from 'react';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
-import AuthContext from '../../context/auth/authContext';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import AuthContext from '../../context/auth/authContext';
+import PostContext from '../../context/post/postContext';
 
 const useStyles = makeStyles({
   card: {
@@ -42,9 +45,15 @@ const useStyles = makeStyles({
 
 const Post = ({ post }) => {
   const authContext = useContext(AuthContext);
+  const postContext = useContext(PostContext);
   const { user } = authContext;
+  const { deletePost } = postContext;
 
   const classes = useStyles();
+
+  const onclick = (e) => {
+    deletePost(post._id);
+  };
 
   if (user) {
     return (
@@ -57,6 +66,7 @@ const Post = ({ post }) => {
           <Typography component="p">
             {post.content}
           </Typography>
+          {user.userName === post.userName && <Button onClick={onclick}>Delete</Button>}
         </CardContent>
       </Card>
     );

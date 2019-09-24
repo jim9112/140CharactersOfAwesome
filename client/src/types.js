@@ -12,3 +12,4 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const GET_POSTS = 'GET_POSTS';
 export const CLEAR_POSTS = 'CLEAR_POSTS';
 export const TOGGLE_DRAWER = 'TOGGLE_DRAWER';
+export const DELETE_POST = 'DELETE_POST';

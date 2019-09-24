@@ -52,5 +52,29 @@ router.post('/', [auth, [
   }
 });
 
+// @route    DELETE api/contacts/:id
+// @desc     Delete contact
+// @access   Private
+
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    let post = await Post.findById(req.params.id);
+
+    if (!post) return res.status(404).json({ msg: 'Post not found' });
+
+    // make sure user owns contact
+    // if (post.userName.toString() !== req.user.userName) {
+    //   return res.status(401).json({ msg: 'Not authorized' });
+    // }
+
+    await Post.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: 'Post Removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 
 module.exports = router;

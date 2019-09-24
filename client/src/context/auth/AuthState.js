@@ -14,7 +14,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_ERRORS 
+  CLEAR_ERRORS,
 } from '../../types';
 
 const AuthState = (props) => {
@@ -104,8 +104,9 @@ const AuthState = (props) => {
       registerUser,
       loadUser,
       login,
-      logout
-    }}>
+      logout,
+    }}
+    >
       { props.children }
     </AuthContext.Provider>
   );
