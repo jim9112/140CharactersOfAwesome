@@ -16,11 +16,11 @@ app.use(express.json({ extended: false }));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/posts', require('./routes/posts'));
-
+app.use('/api/comments', require('./routes/comments'));
 // Serve static routes
 // if (process.env.Node_ENV === 'production') {
 //   // set static folder
-  
+
 // }
 app.use(express.static('client/build'));
 
