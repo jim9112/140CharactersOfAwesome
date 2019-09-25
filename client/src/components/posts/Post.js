@@ -82,7 +82,6 @@ const Post = ({ post }) => {
   const { deletePost, openComments, commentView } = postContext;
 
   const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -99,17 +98,18 @@ const Post = ({ post }) => {
   };
   const handleComments = (stuff) => {
     openComments();
-    console.log(stuff);
+
+    console.log(stuff.content);
   };
   if (user) {
     return (
       <ThemeProvider theme={theme}>
-        <Card className={user.userName === post.userName ? classes.card2 : classes.card} onClick={() => handleComments(post)}>
+        <Card className={user.userName === post.userName ? classes.card2 : classes.card}>
           <CardContent className={classes.cardWidth}>
             <Typography component="h3">
               {post.userName}
             </Typography>
-            <Typography component="p">
+            <Typography component="p" onClick={() => handleComments(post)}>
               {post.content}
             </Typography>
             {user.userName === post.userName && <DeleteForeverIcon className={classes.deleteButton} onClick={handleClickOpen} />}

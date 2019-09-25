@@ -1,8 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useContext } from 'react';
 
-import PropTypes from 'prop-types';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 

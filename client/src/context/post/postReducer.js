@@ -1,4 +1,13 @@
-import { ADD_POST, GET_POSTS, CLEAR_POSTS, TOGGLE_DRAWER, DELETE_POST, TOGGLE_COMMENTS } from '../../types';
+import {
+  ADD_POST,
+  GET_POSTS,
+  CLEAR_POSTS,
+  TOGGLE_DRAWER,
+  DELETE_POST,
+  TOGGLE_COMMENTS,
+  SET_CURRENT_POST,
+  CLEAR_CURRENT_POST
+} from '../../types';
 
 export default (state, action) => {
   switch (action.type) {

@@ -6,7 +6,16 @@ import PostContext from './postContext';
 import AuthContext from '../auth/authContext';
 import postReducer from './postReducer';
 
-import { ADD_POST, GET_POSTS, CLEAR_POSTS, TOGGLE_DRAWER, DELETE_POST, TOGGLE_COMMENTS } from '../../types';
+import {
+  ADD_POST,
+  GET_POSTS,
+  CLEAR_POSTS,
+  TOGGLE_DRAWER,
+  DELETE_POST,
+  TOGGLE_COMMENTS,
+  SET_CURRENT_POST,
+  CLEAR_CURRENT_POST
+} from '../../types';
 
 const PostState = (props) => {
   const authContext = useContext(AuthContext);
@@ -17,9 +26,14 @@ const PostState = (props) => {
     posts: [],
     drawer: false,
     commentView: false,
+    commentViewPost: {
+      userName: '',
+      content: '',
+    },
   };
 
   const [state, dispatch] = useReducer(postReducer, initialState);
+
   // Get all posts
   const getPosts = async () => {
     try {
@@ -88,10 +102,9 @@ const PostState = (props) => {
     } catch (err) {
 
     }
-
   };
-  // Clear posts
 
+  // Clear posts
   const clearPosts = () => {
     dispatch({
       type: CLEAR_POSTS,
@@ -113,7 +126,7 @@ const PostState = (props) => {
       closeComments,
     }}
     >
-      { props.children}
+      { props.children }
     </PostContext.Provider>
   );
 };
