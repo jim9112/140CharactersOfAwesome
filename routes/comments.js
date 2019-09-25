@@ -35,6 +35,14 @@ router.post('/', [auth, [
   }
 });
 // Get comments
-
+router.get('/', auth, async (req, res) => {
+  try {
+    const comments = await Comment.find().sort({ date: -1 });
+    res.json(comments);
+  } catch (error) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 // Delete comments
 module.exports = router;
