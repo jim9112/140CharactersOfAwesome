@@ -16,6 +16,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import CommentIcon from '@material-ui/icons/Comment';
+import Comments from './Comments';
+
 import AuthContext from '../../context/auth/authContext';
 import PostContext from '../../context/post/postContext';
 
@@ -76,7 +79,7 @@ const Post = ({ post }) => {
   const authContext = useContext(AuthContext);
   const postContext = useContext(PostContext);
   const { user } = authContext;
-  const { deletePost } = postContext;
+  const { deletePost, openComments, commentView } = postContext;
 
   const [open, setOpen] = React.useState(false);
 
@@ -94,11 +97,14 @@ const Post = ({ post }) => {
     deletePost(post._id);
     handleClose();
   };
-
+  const handleComments = (stuff) => {
+    openComments();
+    console.log(stuff);
+  };
   if (user) {
     return (
       <ThemeProvider theme={theme}>
-        <Card className={user.userName === post.userName ? classes.card2 : classes.card}>
+        <Card className={user.userName === post.userName ? classes.card2 : classes.card} onClick={() => handleComments(post)}>
           <CardContent className={classes.cardWidth}>
             <Typography component="h3">
               {post.userName}
@@ -109,6 +115,7 @@ const Post = ({ post }) => {
             {user.userName === post.userName && <DeleteForeverIcon className={classes.deleteButton} onClick={handleClickOpen} />}
           </CardContent>
         </Card>
+        
         <Dialog
           open={open}
           onClose={handleClose}
@@ -130,13 +137,13 @@ const Post = ({ post }) => {
             </Button>
           </DialogActions>
         </Dialog>
+        {commentView && <Comments />}
       </ThemeProvider>
     );
-  } else {
-    return(
-      <h1>Loading</h1>
-    );
-  }  
+  }
+  return (
+    <h1>Loading</h1>
+  );
 };
 
 Post.propTypes = {
