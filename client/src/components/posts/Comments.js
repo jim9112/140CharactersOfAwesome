@@ -5,6 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import List from '@material-ui/core/List';
+import Comment from './Comment';
+
 
 import PostContext from '../../context/post/postContext';
 import AuthContext from '../../context/auth/authContext';
@@ -44,16 +47,16 @@ const Comments = () => {
     comment.content = e.target.value;
   };
 
-  const resetForm = () => {
-    comment.content = '';
+  const newForm = () => {
+    document.getElementById('outlined-dense-multiline').value = '';
     document.getElementById('comment-form').reset();
-    console.log('reset form');
+    console.log(document.getElementById('outlined-dense-multiline').value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     addComment(comment);
-    resetForm();
+    newForm();
   };
 
   return (
@@ -90,6 +93,12 @@ const Comments = () => {
               Comment
           </Button>
         </form>
+        <List>
+          {comments.map((comment) => (
+            currentPost._id === comment.postID && <Comment key={comment._id} comment={comment} />
+          ))}
+        </List>
+
       </div>
     </Modal>
   );

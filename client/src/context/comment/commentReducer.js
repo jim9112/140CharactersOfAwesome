@@ -5,7 +5,7 @@ export default (state, action) => {
     case GET_COMMENTS:
       return {
         ...state,
-        posts: action.payload,
+        comments: action.payload,
       };
     case ADD_COMMENTS:
       return {

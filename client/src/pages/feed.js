@@ -12,6 +12,7 @@ import Nav from '../components/layout/Nav';
 import Posts from '../components/posts/Posts';
 import PostContext from '../context/post/postContext';
 import AuthContext from '../context/auth/authContext';
+import CommentContext from '../context/comment/commentContext';
 
 // JS served style sheet
 const useStyles = makeStyles(theme => ({
@@ -68,9 +69,11 @@ const theme = createMuiTheme({
 const Feed = () => {
   const postContext = useContext(PostContext);
   const authContext = useContext(AuthContext);
+  const commentContext = useContext(CommentContext);
 
   const { addPost, getPosts, openDrawer } = postContext;
   const { user, loadUser } = authContext;
+  const { getComments } = commentContext;
 
   const classes = useStyles();
 
@@ -78,6 +81,7 @@ const Feed = () => {
   useEffect(() => {
     loadUser();
     getPosts();
+    getComments();
   }, []);
 
   const post = {

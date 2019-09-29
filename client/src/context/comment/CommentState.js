@@ -14,6 +14,17 @@ const CommentState = (props) => {
 
   const [state, dispatch] = useReducer(commentReducer, initialState);
   // Get all comments
+  const getComments = async () => {
+    try {
+      const res = await axios.get('/api/comments');
+      dispatch({
+        type: GET_COMMENTS,
+        payload: res.data,
+      });
+    } catch (err) {
+
+    }
+  };
   // Create new comment
   const addComment = async (comment) => {
     const config = {
@@ -36,6 +47,7 @@ const CommentState = (props) => {
     <CommentContext.Provider value={{
       comments: state.comments,
       addComment,
+      getComments,
     }}
     >
       { props.children}
