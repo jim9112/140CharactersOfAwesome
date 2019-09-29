@@ -30,6 +30,7 @@ const PostState = (props) => {
       userName: '',
       content: '',
     },
+    currentPost: null,
   };
 
   const [state, dispatch] = useReducer(postReducer, initialState);
@@ -63,7 +64,6 @@ const PostState = (props) => {
 
     }
   };
-
 
   // Toggle menu drawer
   const openDrawer = () => {
@@ -111,11 +111,20 @@ const PostState = (props) => {
     });
   };
 
+  // Set current post view
+  const setCurrentPost = (post) => {
+    dispatch({
+      type: SET_CURRENT_POST,
+      payload: post,
+    });
+  };
+
   return (
     <PostContext.Provider value={{
       posts: state.posts,
       drawer: state.drawer,
       commentView: state.commentView,
+      currentPost: state.currentPost,
       addPost,
       getPosts,
       clearPosts,
@@ -124,6 +133,7 @@ const PostState = (props) => {
       deletePost,
       openComments,
       closeComments,
+      setCurrentPost,
     }}
     >
       { props.children }

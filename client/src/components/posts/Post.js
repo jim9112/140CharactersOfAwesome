@@ -79,7 +79,7 @@ const Post = ({ post }) => {
   const authContext = useContext(AuthContext);
   const postContext = useContext(PostContext);
   const { user } = authContext;
-  const { deletePost, openComments, commentView } = postContext;
+  const { deletePost, openComments, commentView, setCurrentPost, currentPost } = postContext;
 
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
@@ -97,9 +97,8 @@ const Post = ({ post }) => {
     handleClose();
   };
   const handleComments = (stuff) => {
+    setCurrentPost(stuff);
     openComments();
-
-    console.log(stuff.content);
   };
   if (user) {
     return (
