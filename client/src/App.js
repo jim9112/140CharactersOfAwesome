@@ -36,7 +36,7 @@ function App() {
                     <PrivateRoute exact path="/" component={Feed} />
                     <PrivateRoute exact path="/about" component={About} />
                     <Route exact path="/login" component={Login} />
-                    <Route exact path="/register" component={Register} />  
+                    <Route exact path="/register" component={Register} />
                   </Switch>
                 </div>
               </Fragment>
