@@ -6,7 +6,16 @@ import PostContext from './postContext';
 import AuthContext from '../auth/authContext';
 import postReducer from './postReducer';
 
-import { ADD_POST, GET_POSTS, CLEAR_POSTS, TOGGLE_DRAWER, DELETE_POST } from '../../types';
+import {
+  ADD_POST,
+  GET_POSTS,
+  CLEAR_POSTS,
+  TOGGLE_DRAWER,
+  DELETE_POST,
+  TOGGLE_COMMENTS,
+  SET_CURRENT_POST,
+  CLEAR_CURRENT_POST
+} from '../../types';
 
 const PostState = (props) => {
   const authContext = useContext(AuthContext);
@@ -16,16 +25,23 @@ const PostState = (props) => {
   const initialState = {
     posts: [],
     drawer: false,
+    commentView: false,
+    commentViewPost: {
+      userName: '',
+      content: '',
+    },
+    currentPost: null,
   };
 
   const [state, dispatch] = useReducer(postReducer, initialState);
+
   // Get all posts
   const getPosts = async () => {
     try {
       const res = await axios.get('/api/posts');
       dispatch({
         type: GET_POSTS,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
 
@@ -49,7 +65,6 @@ const PostState = (props) => {
     }
   };
 
-
   // Toggle menu drawer
   const openDrawer = () => {
     dispatch({
@@ -64,6 +79,19 @@ const PostState = (props) => {
     });
   };
 
+  // Toggle comment view
+  const openComments = () => {
+    dispatch({
+      type: TOGGLE_COMMENTS,
+      payload: true,
+    });
+  };
+  const closeComments = () => {
+    dispatch({
+      type: TOGGLE_COMMENTS,
+      payload: false,
+    });
+  };
   // Display current users posts
 
   // Delete posts
@@ -72,15 +100,22 @@ const PostState = (props) => {
       await axios.delete(`/api/posts/${id}`, user);
       dispatch({ type: DELETE_POST, payload: id });
     } catch (err) {
-      
-    }
-    
-  };
-  // Clear posts
 
+    }
+  };
+
+  // Clear posts
   const clearPosts = () => {
     dispatch({
       type: CLEAR_POSTS,
+    });
+  };
+
+  // Set current post view
+  const setCurrentPost = (post) => {
+    dispatch({
+      type: SET_CURRENT_POST,
+      payload: post,
     });
   };
 
@@ -88,15 +123,20 @@ const PostState = (props) => {
     <PostContext.Provider value={{
       posts: state.posts,
       drawer: state.drawer,
+      commentView: state.commentView,
+      currentPost: state.currentPost,
       addPost,
       getPosts,
       clearPosts,
       openDrawer,
       closeDrawer,
       deletePost,
+      openComments,
+      closeComments,
+      setCurrentPost,
     }}
     >
-      { props.children}
+      { props.children }
     </PostContext.Provider>
   );
 };
