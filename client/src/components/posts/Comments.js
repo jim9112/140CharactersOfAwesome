@@ -48,6 +48,7 @@ const useStyles = makeStyles(theme => ({
   },
   closeIcon: {
     float: 'right',
+    cursor: 'pointer',
   },
 }));
 
