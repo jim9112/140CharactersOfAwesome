@@ -11,7 +11,7 @@ import Divider from '@material-ui/core/Divider';
 const useStyles = makeStyles(theme => ({
   orangeText: {
     color: '#ED8121',
-  }
+  },
 }));
 
 const Comment = ({ comment }) => {
