@@ -14,10 +14,10 @@ import PostContext from '../../context/post/postContext';
 import AuthContext from '../../context/auth/authContext';
 import CommentContext from '../../context/comment/commentContext';
 
-
+// JS served style sheets
 const useStyles = makeStyles(theme => ({
   paper: {
-    width: 400,
+    maxWidth: 400,
     margin: 'auto',
     marginTop: '10%',
     backgroundColor: '#ED8121',
@@ -52,6 +52,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// color theme for material ui
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -80,15 +81,17 @@ const Comments = () => {
     postID: currentPost._id,
   };
 
-
+  // change value of comment content as user types
   const onChange = (e) => {
     comment.content = e.target.value;
   };
 
+  // resets input for comments
   const newForm = () => {
     document.getElementById('comment-form').reset();
   };
 
+  // form submit
   const onSubmit = (e) => {
     e.preventDefault();
     addComment(comment);
