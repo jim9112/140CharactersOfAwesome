@@ -66,6 +66,9 @@ const useStyles = makeStyles({
     marginRight: '10px',
     cursor: 'pointer',
   },
+  iconBar: {
+    marginTop: '20px',
+  }
 });
 
 // Color theme for page
@@ -118,14 +121,18 @@ const Post = ({ post }) => {
       <ThemeProvider theme={theme}>
         <Card className={classes.card}>
           <CardContent className={classes.cardWidth}>
-            <Chip label={post.userName} className={user.userName === post.userName ? classes.chip2 : classes.chip} />
-            <Typography className={classes.postDisplay} component="p" onClick={() => handleComments(post)}>
-              {post.content}
-            </Typography>
-            <Badge className={classes.margin} badgeContent={numComments} color="primary" onClick={() => handleComments(post)}>
-              <CommentIcon />
-            </Badge>
-            {user.userName === post.userName && <DeleteForeverIcon className={classes.deleteButton} onClick={handleClickOpen} />}
+            <div>
+              <Chip label={post.userName} className={user.userName === post.userName ? classes.chip2 : classes.chip} />
+              <Typography className={classes.postDisplay} component="p" onClick={() => handleComments(post)}>
+                {post.content}
+              </Typography>
+            </div>
+            <div className={classes.iconBar}>
+              <Badge className={classes.margin} badgeContent={numComments} color="primary" onClick={() => handleComments(post)}>
+                <CommentIcon />
+              </Badge>
+              {user.userName === post.userName && <DeleteForeverIcon className={classes.deleteButton} onClick={handleClickOpen} />}
+            </div>
           </CardContent>
         </Card>
         
