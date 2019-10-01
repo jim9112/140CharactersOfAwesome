@@ -104,8 +104,12 @@ const Feed = () => {
   // submitting the form and clearing it
   const onSubmit = (e) => {
     e.preventDefault();
-    addPost(post);
-    resetForm();
+    if (post.content.length > 140) {
+      alert('Nice try, thats more than 140 characters!!!');
+    } else {
+      addPost(post);
+      resetForm();
+    }
   };
   if (commentView) {
     return (<Comments />);
@@ -124,7 +128,6 @@ const Feed = () => {
           </div>
           <form action="" className="bottom-border" id="feed-form" onSubmit={onSubmit}>
             <TextField
-              maxLength="140"
               id="outlined-dense-multiline"
               label="Say Something"
               className={classes.textField}
