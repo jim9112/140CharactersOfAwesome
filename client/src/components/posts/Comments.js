@@ -94,8 +94,12 @@ const Comments = () => {
   // form submit
   const onSubmit = (e) => {
     e.preventDefault();
-    addComment(comment);
-    newForm();
+    if (comment.content.length > 140) {
+      alert('Nice try, thats more than 140 characters!!!');
+    } else {
+      addComment(comment);
+      newForm();
+    }
   };
 
   return (
