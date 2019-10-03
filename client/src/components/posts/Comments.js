@@ -35,15 +35,16 @@ const useStyles = makeStyles(theme => ({
     color: 'white',
   },
   submit: {
-    marginTop: '8px',
-    float: 'right',
+    marginTop: '16px',
     color: 'white',
     backgroundColor: '#151D26',
+    maxWidth: '100px',
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     marginTop: theme.spacing(2),
+    maxWidth: '175px',
     color: '#ED8121',
   },
   closeIcon: {
@@ -112,7 +113,6 @@ const Comments = () => {
         </p>
         <form action="" className={classes.formStyles} id="comment-form" onSubmit={onSubmit}>
           <TextField
-            maxLength="140"
             id="outlined-freddense-multiline"
             label="Say Something"
             className={classes.textField}
