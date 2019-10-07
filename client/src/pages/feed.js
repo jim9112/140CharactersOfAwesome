@@ -74,7 +74,7 @@ const Feed = () => {
 
   const { addPost, getPosts, openDrawer, commentView } = postContext;
   const { user, loadUser } = authContext;
-  const { getComments } = commentContext;
+  const { getComments, getLikes } = commentContext;
 
   const classes = useStyles();
 
@@ -83,6 +83,7 @@ const Feed = () => {
     loadUser();
     getPosts();
     getComments();
+    getLikes();
   }, []);
 
   const post = {

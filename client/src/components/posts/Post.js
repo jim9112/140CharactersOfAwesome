@@ -19,6 +19,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CommentIcon from '@material-ui/icons/Comment';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 import AuthContext from '../../context/auth/authContext';
 import PostContext from '../../context/post/postContext';
@@ -51,6 +52,7 @@ const useStyles = makeStyles({
   },
   margin: {
     cursor: 'pointer',
+    marginRight: '20px',
   },
   chip: {
     color: '#ED8121',
@@ -89,11 +91,25 @@ const Post = ({ post }) => {
   const commentContext = useContext(CommentContext);
   const { user } = authContext;
   const { deletePost, openComments, commentView, setCurrentPost, currentPost } = postContext;
-  const { comments } = commentContext;
+  const { comments, likes, addLikeList } = commentContext;
   const [open, setOpen] = React.useState(false);
 
   let numComments = 0;
-  for (let i=0; i<comments.length; i++) {
+  let numLikes = 0;
+  let isLikes = false;
+  let like = {
+    postID: post._id,
+    likes: [post.userName],
+  };
+
+  for (let j = 0; j < likes.length; j++) {
+    if (likes[j].postID === post._id) {
+      numLikes = likes[j].likes.length;
+      isLikes = true;
+    }
+  }
+
+  for (let i = 0; i < comments.length; i++) {
     if (comments[i].postID === post._id) {
       numComments += 1;
     }
@@ -116,6 +132,14 @@ const Post = ({ post }) => {
     setCurrentPost(stuff);
     openComments();
   };
+  const addLike = (aLike) => {
+    console.log('outer like');
+    if (isLikes === false) {
+      addLikeList(aLike);
+      console.log('like');
+    }
+
+  }
   if (user) {
     return (
       <ThemeProvider theme={theme}>
@@ -130,6 +154,9 @@ const Post = ({ post }) => {
             <div className={classes.iconBar}>
               <Badge className={classes.margin} badgeContent={numComments} color="primary" onClick={() => handleComments(post)}>
                 <CommentIcon />
+              </Badge>
+              <Badge className={classes.margin} badgeContent={numLikes} color="primary" onClick={() => addLike(like)}>
+                <ThumbUpIcon />
               </Badge>
               {user.userName === post.userName && <DeleteForeverIcon className={classes.deleteButton} onClick={handleClickOpen} />}
             </div>

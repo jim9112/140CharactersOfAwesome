@@ -18,3 +18,5 @@ export const GET_COMMENTS = 'GET_COMMENTS';
 export const TOGGLE_COMMENTS = 'TOGGLE_COMMENTS';
 export const SET_CURRENT_POST = 'SET_CURRENT_POST';
 export const CLEAR_CURRENT_POST = 'CLEAR_CURRENT_POST';
+export const GET_LIKES = 'GET_LIKES';
+export const ADD_LIKE_LIST = 'ADD_LIKE_LIST';

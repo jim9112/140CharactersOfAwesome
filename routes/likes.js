@@ -33,6 +33,7 @@ router.post('/', [auth, [
     res.status(500).send('Server Error');
   }
 });
+
 // get all likes
 router.get('/', auth, async (req, res) => {
   try {
@@ -43,9 +44,9 @@ router.get('/', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
 // add new like to array
 // use Put for this
-
 router.put('/', auth, async (req, res) => {
   const { id, postID, likes } = req.body;
 
