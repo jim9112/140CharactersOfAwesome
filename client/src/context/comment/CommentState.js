@@ -59,7 +59,6 @@ const CommentState = (props) => {
   };
   // add like array
   const addLikeList = async (like) => {
-    console.log(like);
     const config = {
       headers: {
         'Content-Type': 'application/json',

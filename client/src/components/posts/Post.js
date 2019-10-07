@@ -132,14 +132,12 @@ const Post = ({ post }) => {
     setCurrentPost(stuff);
     openComments();
   };
+
   const addLike = (aLike) => {
-    console.log('outer like');
     if (isLikes === false) {
       addLikeList(aLike);
-      console.log('like');
     }
-
-  }
+  };
   if (user) {
     return (
       <ThemeProvider theme={theme}>
