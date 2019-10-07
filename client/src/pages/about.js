@@ -52,10 +52,16 @@ const About = () => {
           <Typography variant="h5" component="h3" gutterBottom>
             A social media app built by James Hannan
           </Typography>
-          <Typography component="p">
+          <Typography variant="body1" component="p">
             If you would like to contribute or report suggestions or bugs please check out the{" "}
             <Link href="https://github.com/jim9112/140CharactersOfAwesome" variant="body2" target="_blank">
                 Github Repo
+            </Link>
+          </Typography>
+          <Typography variant="body1" component="p">
+            A project built with the MERN stack and {" "}
+            <Link href="https://material-ui.com/" variant="body2" target="_blank">
+                Material-UI
             </Link>
           </Typography>
         </div>
