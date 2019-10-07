@@ -34,7 +34,15 @@ router.post('/', [auth, [
   }
 });
 // get all likes
-
+router.get('/', auth, async (req, res) => {
+  try {
+    const likes = await Likes.find().sort({ date: -1 });
+    res.json(likes);
+  } catch (error) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 // add new like to array
 // use Put for this
 
