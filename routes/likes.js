@@ -46,4 +46,28 @@ router.get('/', auth, async (req, res) => {
 // add new like to array
 // use Put for this
 
+router.put('/', auth, async (req, res) => {
+  const { id, postID, likes } = req.body;
+
+  // build contact object
+  const likeFields = {};
+  likeFields.postID = postID;
+  likeFields.likes = likes;
+
+  try {
+    let like = await Likes.findById(id);
+
+    if (!like) return res.status(404).json({ msg: 'Like not found' });
+
+    like = await Likes.findByIdAndUpdate(id,
+      { $set: likeFields },
+      { new: true });
+
+    res.json(like);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
