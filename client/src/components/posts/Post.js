@@ -70,7 +70,7 @@ const useStyles = makeStyles({
   },
   iconBar: {
     marginTop: '20px',
-  }
+  },
 });
 
 // Color theme for page
@@ -90,19 +90,17 @@ const Post = ({ post }) => {
   const postContext = useContext(PostContext);
   const commentContext = useContext(CommentContext);
   const { user } = authContext;
-  const { deletePost, openComments, commentView, setCurrentPost, currentPost } = postContext;
+  const { deletePost, openComments, setCurrentPost } = postContext;
   const { comments, likes, addLikeList, addNewLike } = commentContext;
   const [open, setOpen] = React.useState(false);
 
+  // variables specific for this page
   let numComments = 0;
   let numLikes = 0;
   let isLikes = false;
-  let like = {
-    postID: post._id,
-    likes: [user.userName],
-  };
   let currentLike = null;
 
+  // Counts likes for post to update badge
   for (let j = 0; j < likes.length; j++) {
     if (likes[j].postID === post._id) {
       numLikes = likes[j].likes.length;
@@ -110,25 +108,33 @@ const Post = ({ post }) => {
     }
   }
 
+  // Searches comments for the post ID and increases comment badge count with matches
   for (let i = 0; i < comments.length; i++) {
     if (comments[i].postID === post._id) {
       numComments += 1;
     }
   }
+
+  // event handler for open comments
   const handleClickOpen = () => {
     setOpen(true);
   };
 
+  // event handler for the close comments button
   const handleClose = () => {
     setOpen(false);
   };
 
+  // Setts classes to JS style object
   const classes = useStyles();
 
+  // Event handler for the delete button
   const onclick = () => {
     deletePost(post._id);
     handleClose();
   };
+
+  // Opens the comments screen with data from the post selected
   const handleComments = (stuff) => {
     setCurrentPost(stuff);
     openComments();
@@ -136,17 +142,27 @@ const Post = ({ post }) => {
 
   const addLike = (post) => {
     if (isLikes === false) {
+      let like = {
+        postID: post._id,
+        likes: [user.userName],
+      };
       addLikeList(like);
     } else if (isLikes) {
       for (let k = 0; k < likes.length; k++) {
         if (likes[k].postID === post._id) {
           numLikes = likes[k].likes.length;
           isLikes = true;
-          currentLike = likes[k];
+          let userCommented = false;
+          if (likes[k].likes.includes(user.userName)) {
+            userCommented = true;
+          }
+          if (userCommented === false) {
+            currentLike = likes[k];
+            currentLike.likes.push(user.userName);
+            addNewLike(currentLike);
+          }
         }
       }
-      currentLike.likes.push(user.userName);
-      addNewLike(currentLike);
     }
   };
   if (user) {
