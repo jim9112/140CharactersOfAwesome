@@ -1,4 +1,4 @@
-import { ADD_COMMENTS, GET_COMMENTS, GET_LIKES, ADD_LIKE_LIST } from '../../types';
+import { ADD_COMMENTS, GET_COMMENTS, GET_LIKES, ADD_LIKE_LIST, ADD_LIKE } from '../../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -17,10 +17,15 @@ export default (state, action) => {
         ...state,
         comments: [action.payload, ...state.comments],
       };
-      case ADD_LIKE_LIST:
+    case ADD_LIKE_LIST:
       return {
         ...state,
         likes: [action.payload, ...state.likes],
+      };
+    case ADD_LIKE:
+      return {
+        ...state,
+        likes: state.likes.map(like => like._id === action.payload._id ? action.payload : like),
       };
     default:
       return state;

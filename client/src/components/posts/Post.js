@@ -91,7 +91,7 @@ const Post = ({ post }) => {
   const commentContext = useContext(CommentContext);
   const { user } = authContext;
   const { deletePost, openComments, commentView, setCurrentPost, currentPost } = postContext;
-  const { comments, likes, addLikeList } = commentContext;
+  const { comments, likes, addLikeList, addNewLike } = commentContext;
   const [open, setOpen] = React.useState(false);
 
   let numComments = 0;
@@ -99,8 +99,9 @@ const Post = ({ post }) => {
   let isLikes = false;
   let like = {
     postID: post._id,
-    likes: [post.userName],
+    likes: [user.userName],
   };
+  let currentLike = null;
 
   for (let j = 0; j < likes.length; j++) {
     if (likes[j].postID === post._id) {
@@ -133,9 +134,19 @@ const Post = ({ post }) => {
     openComments();
   };
 
-  const addLike = (aLike) => {
+  const addLike = (post) => {
     if (isLikes === false) {
-      addLikeList(aLike);
+      addLikeList(like);
+    } else if (isLikes) {
+      for (let k = 0; k < likes.length; k++) {
+        if (likes[k].postID === post._id) {
+          numLikes = likes[k].likes.length;
+          isLikes = true;
+          currentLike = likes[k];
+        }
+      }
+      currentLike.likes.push(user.userName);
+      addNewLike(currentLike);
     }
   };
   if (user) {
@@ -153,7 +164,7 @@ const Post = ({ post }) => {
               <Badge className={classes.margin} badgeContent={numComments} color="primary" onClick={() => handleComments(post)}>
                 <CommentIcon />
               </Badge>
-              <Badge className={classes.margin} badgeContent={numLikes} color="primary" onClick={() => addLike(like)}>
+              <Badge className={classes.margin} badgeContent={numLikes} color="primary" onClick={() => addLike(post)}>
                 <ThumbUpIcon />
               </Badge>
               {user.userName === post.userName && <DeleteForeverIcon className={classes.deleteButton} onClick={handleClickOpen} />}

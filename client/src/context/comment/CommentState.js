@@ -5,7 +5,7 @@ import axios from 'axios';
 import commentReducer from './commentReducer';
 import CommentContext from './commentContext';
 
-import { ADD_COMMENTS, GET_COMMENTS, GET_LIKES, ADD_LIKE_LIST } from '../../types';
+import { ADD_COMMENTS, GET_COMMENTS, GET_LIKES, ADD_LIKE_LIST, ADD_LIKE } from '../../types';
 
 const CommentState = (props) => {
   const initialState = {
@@ -57,6 +57,7 @@ const CommentState = (props) => {
 
     }
   };
+
   // add like array
   const addLikeList = async (like) => {
     const config = {
@@ -74,6 +75,26 @@ const CommentState = (props) => {
 
     }
   };
+
+  // add new like to exsisting array
+  const addNewLike = async (like) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      const res = await axios.put('/api/likes/', like, config);
+
+      dispatch({
+        type: ADD_LIKE,
+        payload: res.data
+      });
+    } catch (err) {
+
+    } 
+    
+  };
   return (
     <CommentContext.Provider value={{
       comments: state.comments,
@@ -82,6 +103,7 @@ const CommentState = (props) => {
       getComments,
       getLikes,
       addLikeList,
+      addNewLike,
     }}
     >
       { props.children}
