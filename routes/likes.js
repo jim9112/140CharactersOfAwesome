@@ -50,7 +50,6 @@ router.get('/', auth, async (req, res) => {
 router.put('/', auth, async (req, res) => {
   const { likes, _id, postID } = req.body;
 
-  // build contact object
   const likeFields = {};
   likeFields.postID = postID;
   likeFields.likes = likes;
@@ -71,4 +70,19 @@ router.put('/', auth, async (req, res) => {
   }
 });
 
+// Delete likes
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    let like = await Likes.findById(req.params.id);
+
+    if (!like) return res.status(404).json({ msg: 'Like not found' });
+
+    await Likes.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: 'Like Removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 module.exports = router;

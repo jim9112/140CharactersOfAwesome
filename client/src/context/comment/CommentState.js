@@ -5,7 +5,7 @@ import axios from 'axios';
 import commentReducer from './commentReducer';
 import CommentContext from './commentContext';
 
-import { ADD_COMMENTS, GET_COMMENTS, GET_LIKES, ADD_LIKE_LIST, ADD_LIKE } from '../../types';
+import { ADD_COMMENTS, GET_COMMENTS, GET_LIKES, ADD_LIKE_LIST, ADD_LIKE, DELETE_COMMENT, DELETE_LIKE } from '../../types';
 
 const CommentState = (props) => {
   const initialState = {
@@ -45,6 +45,15 @@ const CommentState = (props) => {
     }
   };
 
+  // Delete comment
+  const deleteComment = async (id) => {
+    try {
+      await axios.delete(`/api/comments/${id}`);
+      dispatch({ type: DELETE_COMMENT, payload: id });
+    } catch (err) {
+
+    }
+  };
   // get all post likes
   const getLikes = async () => {
     try {
@@ -95,6 +104,16 @@ const CommentState = (props) => {
     } 
     
   };
+
+  // Delete like
+  const deleteLike = async (id) => {
+    try {
+      await axios.delete(`/api/likes/${id}`);
+      dispatch({ type: DELETE_LIKE, payload: id });
+    } catch (err) {
+
+    }
+  };
   return (
     <CommentContext.Provider value={{
       comments: state.comments,
@@ -104,6 +123,8 @@ const CommentState = (props) => {
       getLikes,
       addLikeList,
       addNewLike,
+      deleteComment,
+      deleteLike,
     }}
     >
       { props.children}

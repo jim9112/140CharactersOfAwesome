@@ -45,4 +45,21 @@ router.get('/', auth, async (req, res) => {
   }
 });
 // Delete comments
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    let comment = await Comment.findById(req.params.id);
+
+    if (!comment) return res.status(404).json({ msg: 'Comment not found' });
+
+    await Comment.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: 'Comment Removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+
 module.exports = router;
