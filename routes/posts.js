@@ -62,11 +62,6 @@ router.delete('/:id', auth, async (req, res) => {
 
     if (!post) return res.status(404).json({ msg: 'Post not found' });
 
-    // make sure user owns contact
-    // if (post.userName.toString() !== req.user.userName) {
-    //   return res.status(401).json({ msg: 'Not authorized' });
-    // }
-
     await Post.findByIdAndRemove(req.params.id);
 
     res.json({ msg: 'Post Removed' });

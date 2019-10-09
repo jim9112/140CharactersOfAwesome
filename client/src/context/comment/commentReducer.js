@@ -1,4 +1,4 @@
-import { ADD_COMMENTS, GET_COMMENTS, GET_LIKES, ADD_LIKE_LIST, ADD_LIKE } from '../../types';
+import { ADD_COMMENTS, GET_COMMENTS, GET_LIKES, ADD_LIKE_LIST, ADD_LIKE, DELETE_COMMENT, DELETE_LIKE } from '../../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -17,6 +17,11 @@ export default (state, action) => {
         ...state,
         comments: [action.payload, ...state.comments],
       };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.filter(comment => comment._id !== action.payload),
+      };
     case ADD_LIKE_LIST:
       return {
         ...state,
@@ -26,6 +31,11 @@ export default (state, action) => {
       return {
         ...state,
         likes: state.likes.map(like => like._id === action.payload._id ? action.payload : like),
+      };
+    case DELETE_LIKE:
+      return {
+        ...state,
+        likes: state.likes.filter(like => like._id !== action.payload),
       };
     default:
       return state;

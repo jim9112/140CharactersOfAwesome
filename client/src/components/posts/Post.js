@@ -91,7 +91,7 @@ const Post = ({ post }) => {
   const commentContext = useContext(CommentContext);
   const { user } = authContext;
   const { deletePost, openComments, setCurrentPost } = postContext;
-  const { comments, likes, addLikeList, addNewLike } = commentContext;
+  const { comments, likes, addLikeList, addNewLike, deleteComment, deleteLike } = commentContext;
   const [open, setOpen] = React.useState(false);
 
   // variables specific for this page
@@ -125,12 +125,23 @@ const Post = ({ post }) => {
     setOpen(false);
   };
 
-  // Setts classes to JS style object
+  // Sets classes to JS style object
   const classes = useStyles();
 
   // Event handler for the delete button
   const onclick = () => {
     deletePost(post._id);
+    // Finds and deletes comments that match the post 
+    for (let l = 0; l < comments.length; l++) {
+      if (comments[l].postID === post._id) {
+        deleteComment(comments[l]._id);
+      }
+    }
+    for (let m = 0; m < likes.length; m++) {
+      if (likes[m].postID === post._id) {
+        deleteLike(likes[m]._id);
+      }
+    }
     handleClose();
   };
 
@@ -140,6 +151,7 @@ const Post = ({ post }) => {
     openComments();
   };
 
+  // Adds likes to the post
   const addLike = (post) => {
     if (isLikes === false) {
       let like = {
