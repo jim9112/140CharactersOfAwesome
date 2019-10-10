@@ -37,12 +37,15 @@ const useStyles = makeStyles({
     },
     '& p': {
       marginLeft: '20px',
-      color: 'white',
     },
   },
   deleteButton: {
     cursor: 'pointer',
     float: 'right',
+  },
+  postDate: {
+    float: 'right',
+    color: '#ED8121',
   },
   cardWidth: {
     width: '100%',
@@ -65,11 +68,15 @@ const useStyles = makeStyles({
     backgroundColor: '#ED8121',
   },
   postDisplay: {
-    marginRight: '10px',
     cursor: 'pointer',
+    color: 'white',
   },
   iconBar: {
     marginTop: '20px',
+  },
+  dateContainer: {
+    textAlign: 'center',
+    
   },
 });
 
@@ -106,6 +113,7 @@ const Post = ({ post }) => {
   let numLikes = 0;
   let isLikes = false;
   let currentLike = null;
+  var postDate = "";
 
   // Counts likes for post to update badge
   likes.forEach((like) => {
@@ -122,6 +130,14 @@ const Post = ({ post }) => {
     }
   });
 
+  const setDate = () => {
+    var newDate = Date.parse(post.date);
+    var anotherDate = new Date(newDate);
+    var projectDate = anotherDate.toString().split(' ');
+    postDate = projectDate[2] + " " + projectDate[1] + " at " + projectDate[4];
+    console.log(postDate);
+  };
+  setDate();
   // event handler for open comments
   const handleClickOpen = () => {
     setOpen(true);
@@ -193,10 +209,17 @@ const Post = ({ post }) => {
           <CardContent className={classes.cardWidth}>
             <div>
               <Chip label={post.userName} className={user.userName === post.userName ? classes.chip2 : classes.chip} />
+              <Typography className={classes.postDate} component="p">
+                {postDate}
+              </Typography>
+              
+            </div>
+            <div className={classes.dateContainer}>
               <Typography className={classes.postDisplay} component="p" onClick={() => handleComments(post)}>
                 {post.content}
               </Typography>
             </div>
+            
             <div className={classes.iconBar}>
               <Badge className={classes.margin} badgeContent={numComments} color="primary" onClick={() => handleComments(post)}>
                 <CommentIcon />

@@ -6,7 +6,6 @@ import {
   DELETE_POST,
   TOGGLE_COMMENTS,
   SET_CURRENT_POST,
-  CLEAR_CURRENT_POST
 } from '../../types';
 
 export default (state, action) => {
@@ -39,7 +38,7 @@ export default (state, action) => {
     case DELETE_POST:
       return {
         ...state,
-        posts: state.posts.filter(post => post._id !== action.payload),
+        posts: state.posts.filter((post) => post._id !== action.payload),
       };
     case SET_CURRENT_POST:
       return {

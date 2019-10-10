@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: 200,
     position: 'relative',
     overflow: 'auto',
-    // backgroundColor: 'white',
     backgroundColor: '#151D26',
     color: 'white',
   },
