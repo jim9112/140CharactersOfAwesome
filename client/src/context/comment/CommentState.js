@@ -1,11 +1,19 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 
 import commentReducer from './commentReducer';
 import CommentContext from './commentContext';
 
-import { ADD_COMMENTS, GET_COMMENTS, GET_LIKES, ADD_LIKE_LIST, ADD_LIKE, DELETE_COMMENT, DELETE_LIKE } from '../../types';
+import {
+  ADD_COMMENTS,
+  GET_COMMENTS,
+  GET_LIKES,
+  ADD_LIKE_LIST,
+  ADD_LIKE,
+  DELETE_COMMENT,
+  DELETE_LIKE,
+} from '../../types';
 
 const CommentState = (props) => {
   const initialState = {

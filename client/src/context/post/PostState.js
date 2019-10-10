@@ -14,7 +14,6 @@ import {
   DELETE_POST,
   TOGGLE_COMMENTS,
   SET_CURRENT_POST,
-  CLEAR_CURRENT_POST
 } from '../../types';
 
 const PostState = (props) => {

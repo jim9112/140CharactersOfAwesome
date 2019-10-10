@@ -1,14 +1,13 @@
 /* eslint-disable react/jsx-fragments */
 /* eslint-disable react/jsx-filename-extension */
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   orangeText: {
     color: '#ED8121',
   },

@@ -15,7 +15,7 @@ import AuthContext from '../../context/auth/authContext';
 import CommentContext from '../../context/comment/commentContext';
 
 // JS served style sheets
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     maxWidth: 400,
     margin: 'auto',
@@ -128,7 +128,7 @@ const Comments = () => {
             color="primary"
             className={classes.submit}
           >
-              Comment
+            Comment
           </Button>
         </form>
         <List className={classes.comments}>
@@ -136,7 +136,6 @@ const Comments = () => {
             currentPost._id === comment.postID && <Comment key={comment._id} comment={comment} />
           ))}
         </List>
-
       </div>
     </ThemeProvider>
   );
