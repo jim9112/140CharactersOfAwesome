@@ -74,9 +74,9 @@ const useStyles = makeStyles({
   iconBar: {
     marginTop: '20px',
   },
-  dateContainer: {
+  postContainer: {
     textAlign: 'center',
-    
+    marginTop: '10px',
   },
 });
 
@@ -113,7 +113,7 @@ const Post = ({ post }) => {
   let numLikes = 0;
   let isLikes = false;
   let currentLike = null;
-  var postDate = "";
+  var postDate = '';
 
   // Counts likes for post to update badge
   likes.forEach((like) => {
@@ -214,7 +214,7 @@ const Post = ({ post }) => {
               </Typography>
               
             </div>
-            <div className={classes.dateContainer}>
+            <div className={classes.postContainer}>
               <Typography className={classes.postDisplay} component="p" onClick={() => handleComments(post)}>
                 {post.content}
               </Typography>
