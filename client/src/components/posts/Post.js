@@ -37,12 +37,15 @@ const useStyles = makeStyles({
     },
     '& p': {
       marginLeft: '20px',
-      color: 'white',
     },
   },
   deleteButton: {
     cursor: 'pointer',
     float: 'right',
+  },
+  postDate: {
+    float: 'right',
+    color: '#ED8121',
   },
   cardWidth: {
     width: '100%',
@@ -65,11 +68,15 @@ const useStyles = makeStyles({
     backgroundColor: '#ED8121',
   },
   postDisplay: {
-    marginRight: '10px',
     cursor: 'pointer',
+    color: 'white',
   },
   iconBar: {
     marginTop: '20px',
+  },
+  postContainer: {
+    textAlign: 'center',
+    marginTop: '10px',
   },
 });
 
@@ -91,7 +98,14 @@ const Post = ({ post }) => {
   const commentContext = useContext(CommentContext);
   const { user } = authContext;
   const { deletePost, openComments, setCurrentPost } = postContext;
-  const { comments, likes, addLikeList, addNewLike, deleteComment, deleteLike } = commentContext;
+  const {
+    comments,
+    likes,
+    addLikeList,
+    addNewLike,
+    deleteComment,
+    deleteLike,
+  } = commentContext;
   const [open, setOpen] = React.useState(false);
 
   // variables specific for this page
@@ -99,22 +113,31 @@ const Post = ({ post }) => {
   let numLikes = 0;
   let isLikes = false;
   let currentLike = null;
+  let postDate = '';
 
   // Counts likes for post to update badge
-  for (let j = 0; j < likes.length; j++) {
-    if (likes[j].postID === post._id) {
-      numLikes = likes[j].likes.length;
+  likes.forEach((like) => {
+    if (like.postID === post._id) {
+      numLikes = like.likes.length;
       isLikes = true;
     }
-  }
+  });
 
   // Searches comments for the post ID and increases comment badge count with matches
-  for (let i = 0; i < comments.length; i++) {
-    if (comments[i].postID === post._id) {
+  comments.forEach((comment) => {
+    if (comment.postID === post._id) {
       numComments += 1;
     }
-  }
+  });
 
+  // Create date element for display
+  const setDate = () => {
+    const newDate = Date.parse(post.date);
+    const anotherDate = new Date(newDate);
+    const projectDate = anotherDate.toString().split(' ');
+    postDate = `${projectDate[2]} ${projectDate[1]} at ${projectDate[4]}`;
+  };
+  setDate();
   // event handler for open comments
   const handleClickOpen = () => {
     setOpen(true);
@@ -131,17 +154,19 @@ const Post = ({ post }) => {
   // Event handler for the delete button
   const onclick = () => {
     deletePost(post._id);
-    // Finds and deletes comments that match the post 
-    for (let l = 0; l < comments.length; l++) {
-      if (comments[l].postID === post._id) {
-        deleteComment(comments[l]._id);
+    // Finds and deletes comments that match the post
+    comments.forEach((comment) => {
+      if (comment.postID === post._id) {
+        deleteComment(comment._id);
       }
-    }
-    for (let m = 0; m < likes.length; m++) {
-      if (likes[m].postID === post._id) {
-        deleteLike(likes[m]._id);
+    });
+    // Finds and deletes likes that match post
+    likes.forEach((like) => {
+      if (like.postID === post._id) {
+        deleteLike(like._id);
       }
-    }
+    });
+    // Close pop-up
     handleClose();
   };
 
@@ -160,21 +185,21 @@ const Post = ({ post }) => {
       };
       addLikeList(like);
     } else if (isLikes) {
-      for (let k = 0; k < likes.length; k++) {
-        if (likes[k].postID === post._id) {
-          numLikes = likes[k].likes.length;
+      likes.forEach((like) => {
+        if (like.postID === post._id) {
+          numLikes = like.likes.length;
           isLikes = true;
           let userCommented = false;
-          if (likes[k].likes.includes(user.userName)) {
+          if (like.likes.includes(user.userName)) {
             userCommented = true;
           }
           if (userCommented === false) {
-            currentLike = likes[k];
+            currentLike = like;
             currentLike.likes.push(user.userName);
             addNewLike(currentLike);
           }
         }
-      }
+      });
     }
   };
   if (user) {
@@ -184,10 +209,17 @@ const Post = ({ post }) => {
           <CardContent className={classes.cardWidth}>
             <div>
               <Chip label={post.userName} className={user.userName === post.userName ? classes.chip2 : classes.chip} />
+              <Typography className={classes.postDate} component="p">
+                {postDate}
+              </Typography>
+              
+            </div>
+            <div className={classes.postContainer}>
               <Typography className={classes.postDisplay} component="p" onClick={() => handleComments(post)}>
                 {post.content}
               </Typography>
             </div>
+            
             <div className={classes.iconBar}>
               <Badge className={classes.margin} badgeContent={numComments} color="primary" onClick={() => handleComments(post)}>
                 <CommentIcon />
@@ -199,7 +231,7 @@ const Post = ({ post }) => {
             </div>
           </CardContent>
         </Card>
-        
+
         <Dialog
           open={open}
           onClose={handleClose}

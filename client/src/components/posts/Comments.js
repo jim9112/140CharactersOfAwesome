@@ -15,7 +15,7 @@ import AuthContext from '../../context/auth/authContext';
 import CommentContext from '../../context/comment/commentContext';
 
 // JS served style sheets
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     maxWidth: 400,
     margin: 'auto',
@@ -23,14 +23,13 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#ED8121',
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: '15px',
   },
   comments: {
     marginTop: '10px',
     maxHeight: 200,
     position: 'relative',
     overflow: 'auto',
-    // backgroundColor: 'white',
     backgroundColor: '#151D26',
     color: 'white',
   },
@@ -128,7 +127,7 @@ const Comments = () => {
             color="primary"
             className={classes.submit}
           >
-              Comment
+            Comment
           </Button>
         </form>
         <List className={classes.comments}>
@@ -136,7 +135,6 @@ const Comments = () => {
             currentPost._id === comment.postID && <Comment key={comment._id} comment={comment} />
           ))}
         </List>
-
       </div>
     </ThemeProvider>
   );
