@@ -113,7 +113,7 @@ const Post = ({ post }) => {
   let numLikes = 0;
   let isLikes = false;
   let currentLike = null;
-  var postDate = '';
+  let postDate = '';
 
   // Counts likes for post to update badge
   likes.forEach((like) => {
@@ -130,12 +130,12 @@ const Post = ({ post }) => {
     }
   });
 
+  // Create date element for display
   const setDate = () => {
-    var newDate = Date.parse(post.date);
-    var anotherDate = new Date(newDate);
-    var projectDate = anotherDate.toString().split(' ');
-    postDate = projectDate[2] + " " + projectDate[1] + " at " + projectDate[4];
-    console.log(postDate);
+    const newDate = Date.parse(post.date);
+    const anotherDate = new Date(newDate);
+    const projectDate = anotherDate.toString().split(' ');
+    postDate = `${projectDate[2]} ${projectDate[1]} at ${projectDate[4]}`;
   };
   setDate();
   // event handler for open comments

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#ED8121',
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: '15px',
   },
   comments: {
     marginTop: '10px',
