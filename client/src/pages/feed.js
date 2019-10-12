@@ -16,7 +16,7 @@ import CommentContext from '../context/comment/commentContext';
 import Comments from '../components/posts/Comments';
 
 // JS served style sheet
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -78,7 +78,7 @@ const Feed = () => {
 
   const classes = useStyles();
 
-  // Load Posts
+  // Load Posts, User, Comments, and Likes when the state changes
   useEffect(() => {
     loadUser();
     getPosts();

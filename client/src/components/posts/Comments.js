@@ -49,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
     float: 'right',
     cursor: 'pointer',
   },
+  thePost: {
+    color: 'white',
+    textAlign: 'center',
+  }
 }));
 
 // color theme for material ui
@@ -106,7 +110,7 @@ const Comments = () => {
       <div className={classes.paper}>
         <CloseIcon className={classes.closeIcon} onClick={closeComments} />
         <h2 id="simple-modal-title">{currentPost.userName}</h2>
-        <p id="simple-modal-description">
+        <p id="simple-modal-description" className={classes.thePost}>
           {currentPost.content}
         </p>
         <form action="" className={classes.formStyles} id="comment-form" onSubmit={onSubmit}>

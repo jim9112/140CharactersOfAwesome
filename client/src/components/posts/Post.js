@@ -45,7 +45,7 @@ const useStyles = makeStyles({
   },
   postDate: {
     float: 'right',
-    color: '#ED8121',
+    color: '#2176ae',
   },
   cardWidth: {
     width: '100%',
@@ -56,6 +56,9 @@ const useStyles = makeStyles({
   margin: {
     cursor: 'pointer',
     marginRight: '20px',
+    '& .MuiBadge-badge': {
+      backgroundColor: '#b1ada9',
+    },
   },
   chip: {
     color: '#ED8121',
@@ -73,6 +76,7 @@ const useStyles = makeStyles({
   },
   iconBar: {
     marginTop: '20px',
+    color: '#2176ae',
   },
   postContainer: {
     textAlign: 'center',
